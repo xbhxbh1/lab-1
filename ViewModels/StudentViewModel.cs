@@ -2,6 +2,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using Microsoft.Maui.Controls;
 using StudentCabinetMVVM.Models;
 
 namespace StudentCabinetMVVM.ViewModels;
@@ -20,7 +21,7 @@ public class StudentViewModel : INotifyPropertyChanged
                 _student.FullName = value;
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(Greeting));
-                ((RelayCommand)AddStudentCommand).RaiseCanExecuteChanged();
+                ((Command)AddStudentCommand).ChangeCanExecute();
             }
         }
     }
@@ -60,7 +61,7 @@ public class StudentViewModel : INotifyPropertyChanged
 
     public StudentViewModel()
     {
-        AddStudentCommand = new RelayCommand(AddStudent, CanAddStudent);
+        AddStudentCommand = new Command(AddStudent, CanAddStudent);
     }
 
     private void AddStudent()
