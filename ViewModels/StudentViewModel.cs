@@ -74,7 +74,6 @@ public class StudentViewModel : INotifyPropertyChanged
 
         FullName = string.Empty;
         Group = string.Empty;
-        AverageScore = 0;
     }
 
     private bool CanAddStudent() => !string.IsNullOrWhiteSpace(FullName);
