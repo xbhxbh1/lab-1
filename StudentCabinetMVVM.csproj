@@ -1,8 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
+    <TargetFrameworks>net8.0-android</TargetFrameworks>
     <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
+    <TargetPlatformMinVersion Condition="$([MSBuild]::IsOSPlatform('windows'))">10.0.17763.0</TargetPlatformMinVersion>
+    <WindowsPackageType Condition="$([MSBuild]::IsOSPlatform('windows'))">None</WindowsPackageType>
     <OutputType>Exe</OutputType>
     <RootNamespace>StudentCabinetMVVM</RootNamespace>
     <UseMaui>true</UseMaui>
@@ -20,7 +22,6 @@
     <MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
     <MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
     <MauiImage Include="Resources\Images\*" />
-    <MauiFont Include="Resources\Fonts\*" />
   </ItemGroup>
 
   <ItemGroup>
